@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Orologi – GMBRAND</title>
+<meta name="description" content="Tutti gli orologi personalizzati GMBRAND: Datejust, Nautilus, Oak, Sub, Santos mod e cronografi.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="icon" href="../assets/img/gm-monogram.jpg">
+</head>
+<body>
+<div id="gm-header"></div>
+<main id="main">
+<header class="shop-head"><div class="container">
+  <span class="eyebrow">Orologi GMBRAND</span>
+  <h1 class="h-lg" data-shop-title>Tutti gli orologi</h1>
+  <p class="lead" data-shop-lead></p>
+</div></header>
+<div class="container">
+  <nav class="chips" data-chips aria-label="Collezioni"></nav>
+  <div class="toolbar">
+    <span data-count></span>
+    <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+      <label class="toggle-check"><input type="checkbox" data-instock> Solo disponibili</label>
+      <label class="sr-only" for="sort">Ordina per</label>
+      <select class="select" id="sort" data-sort>
+        <option value="popular">I più popolari</option>
+        <option value="new">Novità</option>
+        <option value="price-asc">Prezzo: dal più basso</option>
+        <option value="price-desc">Prezzo: dal più alto</option>
+      </select>
+    </div>
+  </div>
+  <ul class="grid products" data-shop></ul>
+  <div class="load-more" data-more></div>
+</div>
+<div style="height:96px"></div>
+</main>
+<div id="gm-footer"></div>
+<script src="../assets/data/products.js"></script>
+<script src="preview.js"></script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

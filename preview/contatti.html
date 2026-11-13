@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contatti – GMBRAND</title>
+<meta name="description" content="Contatta GMBRAND: infowatches@gmbrand.it – Anghiari, Toscana, Italia.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="icon" href="../assets/img/gm-monogram.jpg">
+</head>
+<body>
+<div id="gm-header"></div>
+<main id="main">
+<header class="page-title"><div class="container"><span class="eyebrow">Siamo qui per te</span><h1 class="h-lg">Contattaci</h1></div></header>
+<section class="section"><div class="container contact-grid">
+  <div class="contact-card">
+    <p class="lead">Domande su un orologio, un ordine o un progetto su misura? Scrivici: rispondiamo personalmente a ogni messaggio.</p>
+    <div>
+      <a class="row" href="mailto:infowatches@gmbrand.it"><span class="ms">mail</span><div><b>Email</b><small>infowatches@gmbrand.it</small></div></a>
+      <a class="row" href="https://www.instagram.com/gmbrand_watches/" target="_blank" rel="noopener"><span class="ms">photo_camera</span><div><b>Instagram</b><small>@gmbrand_watches</small></div></a>
+      <a class="row" href="https://www.tiktok.com/@gm_brand" target="_blank" rel="noopener"><span class="ms">smart_display</span><div><b>TikTok</b><small>@gm_brand</small></div></a>
+      <div class="row" style="display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--hair)"><span class="ms" style="color:var(--red)">location_on</span><div><b style="font-family:var(--f-display);font-size:12px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:4px">Laboratorio</b><small style="color:var(--gray)">Anghiari, Toscana – Italia</small></div></div>
+    </div>
+  </div>
+  <form class="form" onsubmit="event.preventDefault();GM.toast('Demo: in WordPress questo modulo invia una email a infowatches@gmbrand.it');this.reset()">
+    <div><label for="c-name">Nome *</label><input id="c-name" required></div>
+    <div><label for="c-email">Email *</label><input id="c-email" type="email" required></div>
+    <div class="full"><label for="c-topic">Argomento</label><select id="c-topic"><option>Informazioni su un orologio</option><option>Orologio su misura</option><option>Il mio ordine</option><option>Resi e garanzia</option><option>Altro</option></select></div>
+    <div class="full"><label for="c-msg">Messaggio *</label><textarea id="c-msg" required></textarea></div>
+    <div class="full"><label class="toggle-check" style="text-transform:none;letter-spacing:0;font-family:var(--f-body);font-size:12px"><input type="checkbox" required> Accetto l’informativa sulla privacy</label></div>
+    <div class="full"><button class="btn btn--red" type="submit">Invia messaggio</button></div>
+  </form>
+</div></section>
+</main>
+<div id="gm-footer"></div>
+<script src="../assets/data/products.js"></script>
+<script src="preview.js"></script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

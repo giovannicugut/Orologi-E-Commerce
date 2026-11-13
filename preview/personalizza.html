@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Personalizza il tuo orologio – GMBRAND</title>
+<meta name="description" content="Crea il tuo orologio dei sogni: quadrante, lancette, lunetta e bracciale, costruito a mano in Italia.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="icon" href="../assets/img/gm-monogram.jpg">
+</head>
+<body>
+<div id="gm-header"></div>
+<main id="main">
+<section class="page-hero">
+  <video muted playsinline loop preload="none" data-lazy data-src="https://videos.pexels.com/video-files/6913975/6913975-hd_1920_1080_25fps.mp4" data-src-mobile="https://videos.pexels.com/video-files/6913975/6913975-sd_960_540_25fps.mp4"></video>
+  <div class="container"><span class="eyebrow eyebrow--gold">100% personalizzato</span><h1 class="display">Crea il tuo orologio dei sogni</h1><p class="lead">Ogni dettaglio, costruito sul tuo stile. Raccontaci la tua idea: i nostri orologiai la progetteranno con te e la costruiranno in circa 5 giorni lavorativi.</p></div>
+</section>
+<section class="section section--subtle"><div class="container">
+  <ol class="timeline reveal" style="list-style:none;padding:0;margin:0">
+    <li><h4>Base</h4><p>Datejust, Nautilus, Oak, Sub, Santos o un cronografo.</p></li>
+    <li><h4>Quadrante e lancette</h4><p>Colori, texture, indici baguette o diamante.</p></li>
+    <li><h4>Lunetta e cassa</h4><p>Finiture acciaio, nero, oro o oro rosa.</p></li>
+    <li><h4>Bracciale</h4><p>Jubilee, oyster, integrato o cinturino in pelle.</p></li>
+  </ol>
+</div></section>
+<section class="section"><div class="container narrow">
+  <div class="section-head reveal" style="margin-bottom:40px"><span class="eyebrow">Il tuo progetto</span><h2 class="h-lg">Raccontacelo</h2></div>
+  <form class="form" onsubmit="event.preventDefault();GM.toast('Demo: in WordPress la richiesta ti arriva via email');this.reset()">
+    <div><label for="p-name">Nome *</label><input id="p-name" required></div>
+    <div><label for="p-email">Email *</label><input id="p-email" type="email" required></div>
+    <div class="full"><label for="p-msg">Descrivi il tuo orologio * (modello base, quadrante, lunetta, bracciale, diametro, budget)</label><textarea id="p-msg" required placeholder="Es. Nautilus Mod. 41 mm, quadrante verde con indici diamante, cassa oro rosa…"></textarea></div>
+    <div class="full"><button class="btn btn--red" type="submit">Invia il mio progetto</button></div>
+  </form>
+</div></section>
+</main>
+<div id="gm-footer"></div>
+<script src="../assets/data/products.js"></script>
+<script src="preview.js"></script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
