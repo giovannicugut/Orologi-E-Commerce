@@ -739,3 +739,10 @@ body:not(.has-hero) #main { padding-top: calc(var(--head-h) + var(--nav-h)); }
 .split__media--photo { background: #ffffff; }
 .split__media--photo img { top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; object-fit: contain; transform: none; }
 @media (max-width: 1023px) { .split__media--photo { aspect-ratio: auto; height: 340px; min-height: 0; } .split .split__body { align-items: center; text-align: center; } }
+
+/* Mega menu: stessa griglia per tutte le voci (3 colonne di link + 3 posti foto),
+   così le foto e l'altezza del pannello sono identiche ovunque */
+.mega__inner { grid-template-columns: repeat(3, minmax(180px, 240px)) 1fr; }
+.mega__feature { grid-column: 4; grid-row: 1; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 1060px; width: 100%; justify-self: end; }
+.mega__feature[style*="--tiles:2"] .mega__tile:first-child { grid-column: 2; }
+.mega__feature[style*="--tiles:1"] .mega__tile:first-child { grid-column: 3; }
