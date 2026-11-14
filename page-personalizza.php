@@ -11,7 +11,7 @@ $gm_v    = gm_default_videos();
 $gm_sent = isset( $_GET['sent'] ) ? sanitize_text_field( wp_unslash( $_GET['sent'] ) ) : ''; // phpcs:ignore
 ?>
 <section class="page-hero">
-	<video muted playsinline loop preload="none" data-lazy data-src="<?php echo esc_url( $gm_v['skeleton'][0] ); ?>" data-src-mobile="<?php echo esc_url( $gm_v['skeleton'][1] ); ?>"></video>
+	<video muted playsinline loop preload="none" poster="<?php echo esc_url( GM_URI . '/assets/img/personalizza-poster.jpg' ); ?>" data-lazy data-src="<?php echo esc_url( $gm_v['gears'][0] ); ?>" data-src-mobile="<?php echo esc_url( $gm_v['gears'][1] ); ?>"></video>
 	<div class="container">
 		<span class="eyebrow eyebrow--gold">100% personalizzato</span>
 		<h1 class="display">Crea il tuo orologio dei sogni</h1>

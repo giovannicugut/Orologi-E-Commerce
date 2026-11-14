@@ -773,3 +773,11 @@ body:not(.has-hero) #main { padding-top: calc(var(--head-h) + var(--nav-h)); }
   .page-hero::after { display: none; }
   .page-hero .container { padding: 32px var(--pad) 44px; }
 }
+
+/* Mobile: zoom leggero sui video (tranne la terza slide dell'hero) */
+@media (max-width: 767px) {
+  .hero__media { overflow: hidden; }
+  .hero .hero__slide:not(:nth-child(3)) .hero__media video { transform: scale(1.15); }
+  .banner video, .page-hero video { aspect-ratio: 3 / 2; }
+  .banner__toggle { top: calc(66.67vw - 56px); }
+}
