@@ -30,11 +30,12 @@
     { label: 'Idee regalo', url: 'negozio.html?gift=lui', cols: [['Idee regalo', [['Idee regalo per lui', 'negozio.html?gift=lui'], ['Idee regalo per lei', 'negozio.html?gift=lei'], ['Sotto i 250 €', 'negozio.html?sort=price-asc'], ['Il regalo su misura', 'personalizza.html']]]],
       tiles: [['Per lui', img('2025/12/IMG_9748'), 'negozio.html?gift=lui'], ['Per lei', img('2024/04/IMG_1513'), 'negozio.html?gift=lei'], ['Su misura', img('2024/10/IMG_1781'), 'personalizza.html']] },
     { label: 'Personalizza', url: 'personalizza.html' },
-    { label: 'Servizi', url: 'servizi.html', cols: [
-      ['Assistenza', [['Il nostro servizio', 'servizi.html'], ["Cura dell'orologio", 'cura-orologio.html'], ['Domande frequenti', 'faq.html'], ['Contatti', 'contatti.html']]],
+    { label: 'Servizi', url: 'servizi.html' },
+    { label: 'Chi siamo', url: 'chi-siamo.html' },
+    { label: 'Info', url: 'faq.html', cols: [
+      ['Assistenza', [["Cura dell'orologio", 'cura-orologio.html'], ['Domande frequenti', 'faq.html'], ['Contatti', 'contatti.html']]],
       ['Il tuo account', [['Il mio account', '#account'], ['I miei ordini', '#account'], ['Lista dei desideri', 'negozio.html?wishlist=1']]]
-    ], tiles: [['Il nostro servizio', px(8327871, 600), 'servizi.html'], ["Cura dell'orologio", px(8327590, 600), 'cura-orologio.html']] },
-    { label: 'Chi siamo', url: 'chi-siamo.html' }
+    ], tiles: [["Cura dell'orologio", px(8327590, 600), 'cura-orologio.html'], ['Contattaci', px(8327525, 600), 'contatti.html']] }
   ];
   var PROMOS = [
     { img: img('2025/12/IMG_9912'), eyebrow: 'Il nostro laboratorio', title: 'Assemblati a mano in Italia', text: 'Ogni orologio GMBRAND nasce nel nostro laboratorio in Toscana, sempre con un movimento Seiko originale.', link: 'Scopri chi siamo', url: 'chi-siamo.html' },

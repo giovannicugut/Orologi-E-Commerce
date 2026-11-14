@@ -28,13 +28,13 @@ $gm_s = gm_services();
 	</div>
 </section>
 
-<section class="section section--subtle pillars">
+<section class="section section--subtle pillars" id="impegni">
 	<div class="container">
 		<div class="section-head reveal"><span class="eyebrow">I nostri impegni</span><h2 class="h-lg">Cinque impegni, una promessa</h2></div>
 		<div class="carousel" data-carousel>
 			<ol class="carousel__track">
 				<?php foreach ( $gm_s['pillars'] as $i => $p ) : ?>
-					<li class="pillar">
+					<li class="pillar" id="impegno-<?php echo (int) ( $i + 1 ); ?>">
 						<figure><img src="<?php echo esc_url( $p[0] ); ?>" alt="" loading="lazy"></figure>
 						<span class="pillar__num"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span>
 						<h3><?php echo esc_html( $p[1] ); ?></h3>
@@ -59,7 +59,7 @@ $gm_s = gm_services();
 </figure>
 
 <?php foreach ( $gm_s['splits'] as $i => $sp ) : ?>
-	<section class="svc-split<?php echo $i % 2 ? ' svc-split--reverse' : ''; ?>">
+	<section class="svc-split<?php echo $i % 2 ? ' svc-split--reverse' : ''; ?>" id="<?php echo esc_attr( $sp['id'] ); ?>">
 		<div class="svc-split__media"><img src="<?php echo esc_url( $sp['img'] ); ?>" alt="" loading="lazy"></div>
 		<div class="svc-split__body reveal">
 			<span class="eyebrow"><?php echo esc_html( $sp['eyebrow'] ); ?></span>
@@ -89,7 +89,7 @@ while ( have_posts() ) :
 endwhile;
 ?>
 
-<section class="section">
+<section class="section" id="aiuto">
 	<div class="container">
 		<div class="section-head reveal"><span class="eyebrow">Scopri di più</span><h2 class="h-lg">Come possiamo aiutarti</h2></div>
 		<div class="discover">

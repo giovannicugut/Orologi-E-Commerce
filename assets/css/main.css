@@ -801,3 +801,6 @@ body:not(.has-hero) #main { padding-top: calc(var(--head-h) + var(--nav-h)); }
   .hero__media { height: 62%; -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 52%, rgba(0,0,0,.6) 72%, transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 52%, rgba(0,0,0,.6) 72%, transparent 100%); }
   .hero__scrim { background: linear-gradient(to bottom, rgba(22,22,22,.38) 0%, rgba(22,22,22,.04) 14%, rgba(22,22,22,.06) 30%, rgba(22,22,22,.35) 46%, rgba(22,22,22,.6) 58%, rgba(22,22,22,.85) 68%, #161616 76%); }
 }
+
+/* Sezioni raggiungibili dal menu Servizi: non finiscono sotto la barra in alto */
+#svc-intro, #impegni, #revisione, #cura-quotidiana, #aiuto, .pillar { scroll-margin-top: 120px; }

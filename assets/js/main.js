@@ -120,6 +120,8 @@
     if (e.target.closest('[data-close]') || e.target === overlay) { GM.closeAll(); closeMegas(); }
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { GM.closeAll(); closeMegas(); } });
+  // Link a una sezione della stessa pagina (es. Servizi › Revisione): chiude menu e pannelli
+  window.addEventListener('hashchange', function () { GM.closeAll(); closeMegas(); });
 
   /* ---------- Accordions (mobile nav, footer, product, FAQ) ---------- */
   document.addEventListener('click', function (e) {
