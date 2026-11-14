@@ -23,7 +23,7 @@ function gm_default_videos() {
 	$p = 'https://videos.pexels.com/video-files/';
 	return array(
 		'gears'    => array( $p . '11965370/11965370-hd_1920_1080_24fps.mp4', $p . '11965370/11965370-sd_960_540_24fps.mp4' ),
-		'gold'     => array( $p . '13736229/13736229-hd_1920_1080_30fps.mp4', $p . '13736229/13736229-sd_960_540_30fps.mp4' ),
+		'gold'     => array( $p . '13736229/13736229-hd_1280_720_30fps.mp4', $p . '13736229/13736229-sd_640_360_30fps.mp4' ), // versione leggera: 1,7 MB / 0,4 MB
 		'wrist'    => array( $p . '6328383/6328383-hd_2048_1080_25fps.mp4', $p . '6328383/6328383-sd_960_506_25fps.mp4' ),
 		'blue'     => array( $p . '39108088/16639006_1920_1080_25fps.mp4', $p . '39108088/16639003_960_540_25fps.mp4' ),
 		'hands'    => array( $p . '12178371/12178371-hd_1920_1080_50fps.mp4', $p . '12178371/12178371-sd_960_540_25fps.mp4' ),
@@ -39,7 +39,7 @@ function gm_hero_slides() {
 	$v    = gm_default_videos();
 	$shop = gm_shop_url();
 	$defaults = array(
-		1 => array( 'label' => 'Made in Italy', 'eyebrow' => 'Made in Italy · Anima giapponese', 'title' => 'Orologi su misura, fatti a mano', 'text' => 'Ogni orologio GMBRAND è assemblato a mano in Toscana attorno a un movimento Seiko originale.', 'btn' => 'Scopri la collezione', 'url' => $shop, 'video' => $v['gold'][0], 'video_m' => $v['gold'][1], 'poster' => gm_remote( '2024/10/IMG_2015-768x512.jpg' ) ),
+		1 => array( 'label' => 'Made in Italy', 'eyebrow' => 'Made in Italy · Anima giapponese', 'title' => 'Orologi su misura, fatti a mano', 'text' => 'Ogni orologio GMBRAND è assemblato a mano in Toscana attorno a un movimento Seiko originale.', 'btn' => 'Scopri la collezione', 'url' => $shop, 'video' => $v['gold'][0], 'video_m' => $v['gold'][1], 'poster' => GM_URI . '/assets/img/hero-1-poster.jpg' ),
 		2 => array( 'label' => 'Datejust Mod.', 'eyebrow' => 'Datejust Mod.', 'title' => 'Eleganza senza tempo', 'text' => 'Lunette zigrinate, indici baguette e bracciali jubilee in 36 e 39 mm.', 'btn' => 'Acquista Datejust Mod.', 'url' => gm_cat_link( 'datejust-mod' ), 'video' => $v['gears'][0], 'video_m' => $v['gears'][1], 'poster' => gm_remote( '2024/04/IMG_1498-768x512.jpg' ) ),
 		3 => array( 'label' => 'Cronografi', 'eyebrow' => 'Edizioni limitate', 'title' => 'Precisione e carattere', 'text' => 'Cronografi panda, racing e vintage da 40 mm, costruiti per durare.', 'btn' => 'Acquista i cronografi', 'url' => gm_cat_link( 'cronografi' ), 'video' => $v['blue'][0], 'video_m' => $v['blue'][1], 'poster' => gm_remote( '2024/04/IMG_0303-768x512.jpg' ) ),
 		4 => array( 'label' => 'Su misura', 'eyebrow' => '100% personalizzato', 'title' => 'Crea il tuo orologio dei sogni', 'text' => 'Scegli quadrante, lancette, lunetta e bracciale. I nostri orologiai lo costruiscono per te in cinque giorni lavorativi.', 'btn' => 'Inizia il progetto', 'url' => gm_page_url( 'personalizza' ), 'video' => $v['dial'][0], 'video_m' => $v['dial'][1], 'poster' => gm_remote( '2024/11/IMG_2409-768x512.jpg' ) ),
