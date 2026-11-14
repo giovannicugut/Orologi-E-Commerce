@@ -153,6 +153,10 @@
       var src = (small && v.getAttribute('data-src-mobile')) || v.getAttribute('data-src');
       v.muted = true; v.playsInline = true; v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
       v._src = src;
+      v.removeAttribute('poster'); // niente immagine statica: il video compare in dissolvenza quando è pronto
+      var show = function () { v.classList.add('is-ready'); };
+      v.addEventListener('loadeddata', show);
+      if (v.readyState >= 2) show();
     });
 
     function load(v) { if (v && v._src && !v.src) { v.preload = 'auto'; v.src = v._src; v.load(); } }
