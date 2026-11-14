@@ -155,7 +155,7 @@
       v._src = src;
     });
 
-    function load(v) { if (v && v._src && !v.src) { v.src = v._src; v.load(); } }
+    function load(v) { if (v && v._src && !v.src) { v.preload = 'auto'; v.src = v._src; v.load(); } }
     function durationOf(s) {
       var v = $('video', s);
       if (v && v.duration && isFinite(v.duration)) return Math.min(v.duration * 1000, MAX_DURATION);
