@@ -174,3 +174,15 @@ add_filter( 'woocommerce_page_title', function ( $title ) {
 	}
 	return $title;
 } );
+
+/**
+ * "Paga con carta" on the product page (card logos button, see main.js):
+ * the add-to-cart form is sent with gm_buy_now=1, so after adding the watch
+ * the customer goes straight to the checkout instead of staying on the page.
+ */
+add_filter( 'woocommerce_add_to_cart_redirect', function ( $url ) {
+	if ( ! empty( $_REQUEST['gm_buy_now'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
+		return wc_get_checkout_url();
+	}
+	return $url;
+} );

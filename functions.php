@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'GM_VERSION', '1.2.0' );
+define( 'GM_VERSION', '1.2.8' );
 define( 'GM_DIR', get_template_directory() );
 define( 'GM_URI', get_template_directory_uri() );
 define( 'GM_UPLOADS', 'https://www.gmbrand.it/wp-content/uploads/' ); // fallback imagery (current site)
@@ -138,3 +138,21 @@ function gm_contact_submit() {
 }
 add_action( 'admin_post_gm_contact', 'gm_contact_submit' );
 add_action( 'admin_post_nopriv_gm_contact', 'gm_contact_submit' );
+
+/**
+ * Browser tab icon (favicon): the GM monogram from assets/img.
+ * Used only while no "Icona del sito" is set in Aspetto > Personalizza > Identita del sito,
+ * so the owner can still replace it from the dashboard.
+ */
+function gm_favicon() {
+	if ( has_site_icon() ) {
+		return;
+	}
+	$img = GM_URI . '/assets/img/';
+	echo '<link rel="icon" type="image/png" sizes="32x32" href="' . esc_url( $img . 'favicon-32.png?v=' . GM_VERSION ) . '">' . "\n";
+	echo '<link rel="icon" type="image/png" sizes="512x512" href="' . esc_url( $img . 'favicon-512.png?v=' . GM_VERSION ) . '">' . "\n";
+	echo '<link rel="apple-touch-icon" href="' . esc_url( $img . 'apple-touch-icon.png?v=' . GM_VERSION ) . '">' . "\n";
+}
+add_action( 'wp_head', 'gm_favicon', 2 );
+add_action( 'admin_head', 'gm_favicon' );
+add_action( 'login_head', 'gm_favicon' );

@@ -62,6 +62,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .section { padding: var(--s-3xl) 0; }
 .section--subtle { background: var(--subtle); }
 .section--tight { padding: var(--s-2xl) 0; }
+/* When one element is both container and section, keep the container's side padding */
+.container.section, .container.section--tight { padding-left: var(--pad); padding-right: var(--pad); }
 .center { text-align: center; }
 
 /* ---------- Typography ---------- */
@@ -200,11 +202,11 @@ body:not(.has-hero) #main { padding-top: calc(var(--head-h) + var(--nav-h)); }
 .search-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .search-tags a { border: 1px solid var(--hair); padding: 8px 14px; font-size: 12px; letter-spacing: .06em; }
 .search-tags a:hover { border-color: var(--black); }
-.search-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-top: 24px; }
-.search-results a { display: block; }
-.search-results img { aspect-ratio: 1; object-fit: cover; width: 100%; background: var(--subtle); margin-bottom: 8px; }
-.search-results span { font-family: var(--f-display); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; line-height: 1.35; display: block; }
-.search-results em { font-style: normal; font-weight: 600; font-size: 13px; }
+.search-panel .search-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-top: 24px; }
+.search-panel .search-results a { display: block; }
+.search-panel .search-results img { aspect-ratio: 1; object-fit: cover; width: 100%; background: var(--subtle); margin-bottom: 8px; }
+.search-panel .search-results span { font-family: var(--f-display); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; line-height: 1.35; display: block; }
+.search-panel .search-results em { font-style: normal; font-weight: 600; font-size: 13px; }
 
 /* ==========================================================================
    Hero video slider
@@ -283,6 +285,9 @@ body:not(.has-hero) #main { padding-top: calc(var(--head-h) + var(--nav-h)); }
 @media (max-width: 560px) { .tabs { gap: 18px; } .tab { font-size: 11px; letter-spacing: .1em; } }
 
 /* Product card – stile editoriale */
+/* WooCommerce gives every card <li> the class "product", which would pick up the
+   single-product .product grid below: keep card items as plain blocks everywhere. */
+li.product { display: block; gap: 0; padding-bottom: 0; }
 .pcard { position: relative; display: flex; flex-direction: column; height: 100%; }
 .pcard__media { position: relative; display: block; aspect-ratio: 4 / 5; background: var(--subtle); overflow: hidden; }
 .pcard__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease), opacity .5s; }
@@ -608,7 +613,13 @@ body:not(.has-hero) #main { padding-top: calc(var(--head-h) + var(--nav-h)); }
 .woocommerce .woocommerce-ordering select { height: 40px; border: 1px solid var(--hair); padding: 0 12px; font-size: 12px; background: #fff; }
 .woocommerce ul.products { display: grid !important; grid-template-columns: repeat(4, 1fr); gap: 40px 22px; margin: 0 0 32px !important; clear: both; }
 .woocommerce ul.products::before, .woocommerce ul.products::after { display: none !important; }
-.woocommerce ul.products li.product { width: auto !important; float: none !important; margin: 0 !important; padding: 0 !important; }
+.woocommerce ul.products li.product { width: auto !important; float: none !important; margin: 0 !important; padding: 0 !important; display: block; gap: 0; }
+/* Product cards: undo WooCommerce defaults so the card matches the preview */
+.woocommerce ul.products li.product .pcard__media img { width: 100%; height: 100%; margin: 0; object-fit: cover; }
+.woocommerce ul.products li.product .pcard__title { display: -webkit-box; padding: 0; margin: 0; font-size: 15px; line-height: 21px; }
+.woocommerce ul.products li.product .price { display: inline-flex; margin: 0; font-size: 15px; color: #333; }
+.woocommerce ul.products li.product .price ins { color: var(--red); font-weight: 500; }
+@media (max-width: 767px) { .woocommerce ul.products li.product .pcard__title { font-size: 12px; line-height: 17px; } .woocommerce ul.products li.product .price { font-size: 13px; } }
 @media (max-width: 1199px) { .woocommerce ul.products { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 767px) { .woocommerce ul.products { grid-template-columns: repeat(2, 1fr); gap: 28px 10px; } }
 .woocommerce span.onsale { display: none; }
@@ -678,7 +689,7 @@ body:not(.has-hero) #main { padding-top: calc(var(--head-h) + var(--nav-h)); }
 .woocommerce-account .woocommerce-MyAccount-navigation li a { display: block; padding: 14px 0; border-bottom: 1px solid var(--hair); font-family: var(--f-display); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
 .woocommerce-account .woocommerce-MyAccount-navigation li.is-active a { color: var(--red); }
 .woocommerce form.login, .woocommerce form.register { border: 1px solid var(--hair) !important; border-radius: 0 !important; padding: 32px !important; }
-.wc-page { padding: 24px 0 var(--s-3xl); }
+.wc-page { padding: 24px var(--pad) var(--s-3xl); }
 .wc-block-components-button, .wp-block-button__link { border-radius: 0 !important; }
 .star-rating span::before, .woocommerce p.stars a { color: var(--gold); }
 
@@ -804,3 +815,34 @@ body:not(.has-hero) #main { padding-top: calc(var(--head-h) + var(--nav-h)); }
 
 /* Sezioni raggiungibili dal menu Servizi: non finiscono sotto la barra in alto */
 #svc-intro, #impegni, #revisione, #cura-quotidiana, #aiuto, .pillar { scroll-margin-top: 120px; }
+
+/* Scheda prodotto: foto grande sopra, tutte le foto dell'articolo in griglia sotto (come gmbrand.it) */
+.product__gallery { grid-template-columns: 1fr; gap: 12px; }
+.product__main { aspect-ratio: 3 / 2; }
+.product__main img { object-fit: cover; }
+.product__thumbs { order: 2; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; flex-direction: initial; overflow: visible; }
+.product__thumbs button { width: auto; aspect-ratio: 1 / 1; opacity: .75; transition: opacity .2s, border-color .2s; }
+.product__thumbs button:hover, .product__thumbs button.is-active { opacity: 1; }
+@media (max-width: 767px) { .product__thumbs { grid-template-columns: repeat(4, 1fr); gap: 6px; } }
+/* stessa griglia per la galleria WooCommerce in WordPress */
+.woocommerce div.product div.images .flex-control-thumbs { display: grid !important; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 12px; }
+.woocommerce div.product div.images .flex-control-thumbs li { width: auto !important; float: none !important; margin: 0 !important; }
+.woocommerce div.product div.images .flex-control-thumbs li img { aspect-ratio: 1 / 1; object-fit: cover; opacity: .75; transition: opacity .2s; }
+.woocommerce div.product div.images .flex-control-thumbs li img.flex-active, .woocommerce div.product div.images .flex-control-thumbs li img:hover { opacity: 1; }
+@media (max-width: 767px) { .woocommerce div.product div.images .flex-control-thumbs { grid-template-columns: repeat(4, 1fr); gap: 6px; } }
+
+/* Checkout: accepted card logos (added by main.js) */
+.gm-cards { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 12px; margin: 14px 0 2px; }
+.gm-cards__label { font-family: var(--f-display); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--gray); }
+.gm-cards__list { display: inline-flex; gap: 6px; }
+.gm-cards__item { display: inline-flex; line-height: 0; }
+.gm-cards__item svg { width: 40px; height: 25px; }
+.wc-block-components-checkout-step__heading-container > .gm-cards { width: 100%; justify-content: flex-start; margin: 4px 0 10px; }
+.wc-block-cart__sidebar > .gm-cards { margin: 0 0 14px; }
+.single-product .summary > .gm-cards { justify-content: flex-start; margin: 16px 0 4px; }
+/* Product page: card logos as a "Paga con carta" button (goes straight to checkout) */
+.single-product .summary > .gm-cards--buy { width: 100%; min-height: 52px; justify-content: center; gap: 8px 16px; margin: 12px 0 4px; padding: 10px 16px; background: #fff; border: 1px solid var(--ink); cursor: pointer; transition: background .2s, color .2s; }
+.gm-cards--buy .gm-cards__label { color: var(--ink); font-weight: 600; font-size: 12px; }
+.single-product .summary > .gm-cards--buy:hover { background: var(--ink); }
+.gm-cards--buy:hover .gm-cards__label { color: #fff; }
+.gm-cards--buy:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }

@@ -392,4 +392,63 @@
     main.addEventListener('mouseleave', function () { main.classList.remove('is-zoom'); });
   };
   GM.initGallery();
+
+  /* ---------- Accepted card logos ----------
+     Cart: just above "Procedi al pagamento". Checkout: under "Opzioni di pagamento".
+     Product page: below the add-to-cart / express buttons, above the perks list.
+     Cart and checkout are rendered by React, so the row is (re)attached whenever
+     the DOM changes. */
+  GM.initCardLogos = function () {
+    var spots = [
+      function () { var b = $('.wc-block-cart__submit'); return b && [b.parentElement, b]; },
+      function () { var h = $('.wc-block-checkout__payment-method .wc-block-components-checkout-step__heading-container'); return h && [h, null]; },
+      function () { var s = $('.single-product .summary'); if (!s) return null; var p = $('.perks', s); return p ? [s, p] : [s, null]; }
+    ];
+    if (!$('.wp-block-woocommerce-cart, .wc-block-cart, .wp-block-woocommerce-checkout, .wc-block-checkout, .single-product .summary')) return;
+    var svg = function (inner) { return '<svg viewBox="0 0 48 30" width="48" height="30" aria-hidden="true">' + inner + '</svg>'; };
+    var frame = '<rect x=".5" y=".5" width="47" height="29" rx="4" fill="#fff" stroke="#d9d9d9"/>';
+    var logos = [
+      ['Visa', frame + '<text x="24" y="20" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" font-style="italic" fill="#1a1f71">VISA</text>'],
+      ['Mastercard', frame + '<circle cx="19.5" cy="15" r="8" fill="#eb001b"/><circle cx="28.5" cy="15" r="8" fill="#f79e1b"/><path d="M24 8.4a8 8 0 0 1 0 13.2a8 8 0 0 1 0-13.2z" fill="#ff5f00"/>'],
+      ['Maestro', frame + '<circle cx="19.5" cy="15" r="8" fill="#eb001b"/><circle cx="28.5" cy="15" r="8" fill="#00a2e5"/><path d="M24 8.4a8 8 0 0 1 0 13.2a8 8 0 0 1 0-13.2z" fill="#7375cf"/>'],
+      ['American Express', '<rect width="48" height="30" rx="4" fill="#2e77bc"/><text x="24" y="19" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="700" fill="#fff">AMEX</text>']
+    ];
+    var names = logos.map(function (l) { return l[0]; }).join(', ');
+    // Product page with a buy form: the logos become a "Paga con carta" button that
+    // adds the watch to the cart and goes straight to the checkout (see inc/woocommerce.php).
+    var buyForm = $('.single-product .summary form.cart');
+    var row = document.createElement(buyForm ? 'button' : 'div');
+    row.className = 'gm-cards' + (buyForm ? ' gm-cards--buy' : '');
+    if (buyForm) row.type = 'button';
+    row.setAttribute('aria-label', buyForm ? 'Paga subito con carta (' + names + ')' : 'Carte accettate: ' + names);
+    row.innerHTML = '<span class="gm-cards__label">' + (buyForm ? 'Paga con carta' : 'Carte accettate') + '</span><span class="gm-cards__list">' +
+      logos.map(function (l) { return '<span class="gm-cards__item" title="' + l[0] + '">' + svg(l[1]) + '</span>'; }).join('') + '</span>';
+    if (buyForm) {
+      row.addEventListener('click', function () {
+        var flag = document.createElement('input');
+        flag.type = 'hidden'; flag.name = 'gm_buy_now'; flag.value = '1';
+        buyForm.appendChild(flag);
+        var submit = $('button[name="add-to-cart"], .single_add_to_cart_button', buyForm);
+        if (buyForm.requestSubmit) buyForm.requestSubmit(submit || undefined); else if (submit) submit.click();
+        // The form data is taken at submit time: remove the flag so a later normal
+        // "Aggiungi al carrello" (e.g. after going back) stays on the product page.
+        setTimeout(function () { if (flag.parentNode) flag.parentNode.removeChild(flag); }, 0);
+      });
+    }
+    var pending = false;
+    var place = function () {
+      pending = false;
+      for (var i = 0; i < spots.length; i++) {
+        var spot = spots[i]();
+        if (!spot) continue;
+        var parent = spot[0], before = spot[1];
+        if (row.parentElement !== parent || row.nextElementSibling !== before) parent.insertBefore(row, before);
+        return;
+      }
+    };
+    new MutationObserver(function () { if (!pending) { pending = true; setTimeout(place, 50); } })
+      .observe(document.body, { childList: true, subtree: true });
+    place();
+  };
+  GM.initCardLogos();
 })();
